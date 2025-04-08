@@ -33,8 +33,25 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp0`, function (sprite, loc
     tiles.placeOnRandomTile(Player1, assets.tile`Warp1`)
     level = 0
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy9, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy1, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC7, function (sprite, otherSprite) {
     if (otherSprite == Grassy_Rat) {
@@ -49,6 +66,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC7, function (sprite, otherSpr
         })
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy3, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC5, function (sprite, otherSprite) {
     if (otherSprite == Injured_Dungeon_Skeleton) {
         timer.throttle("action", 1000, function () {
@@ -59,6 +86,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC5, function (sprite, otherSpr
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp6`, function (sprite, location) {
     tiles.placeOnRandomTile(Player1, assets.tile`Warp7`)
     level = 0
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy7, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC2, function (sprite, otherSprite) {
     if (otherSprite == Dungeon_Rat) {
@@ -120,6 +157,16 @@ info.onCountdownEnd(function () {
     game.showLongText("The family gem was destroyed and the dimensions have collapsed!", DialogLayout.Bottom)
     game.gameOver(false)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy4, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC4, function (sprite, otherSprite) {
     if (otherSprite == Dungeon_Snake) {
         timer.throttle("action", 1000, function () {
@@ -147,13 +194,16 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleBlueCrystal, f
     tiles.placeOnTile(Nether_Snake, tiles.getTileLocation(27, 6))
     Nether_Skeleton1 = sprites.create(assets.image`Nether Skeleton`, SpriteKind.Enemy7)
     tiles.placeOnTile(Nether_Skeleton1, tiles.getTileLocation(10, 9))
-    tiles.placeOnTile(Nether_Skeleton1, tiles.getTileLocation(33, 9))
+    Nether_Skeleton1.vx = 300
+    Nether_Skeleton1.setBounceOnWall(true)
     Nether_Skeleton2 = sprites.create(assets.image`Nether Skeleton`, SpriteKind.Enemy8)
     tiles.placeOnTile(Nether_Skeleton2, tiles.getTileLocation(6, 18))
-    tiles.placeOnTile(Nether_Skeleton2, tiles.getTileLocation(6, 33))
+    Nether_Skeleton2.vx = 300
+    Nether_Skeleton2.setBounceOnWall(true)
     Nether_Skeleton3 = sprites.create(assets.image`Nether Skeleton`, SpriteKind.Enemy9)
     tiles.placeOnTile(Nether_Skeleton3, tiles.getTileLocation(30, 30))
-    tiles.placeOnTile(Nether_Skeleton3, tiles.getTileLocation(43, 30))
+    Nether_Skeleton3.vx = 300
+    Nether_Skeleton3.setBounceOnWall(true)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC11, function (sprite, otherSprite) {
     if (otherSprite == Nether_Rat) {
@@ -186,6 +236,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC6, function (sprite, otherSpr
         })
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy6, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp10`, function (sprite, location) {
     tiles.placeOnRandomTile(Player1, assets.tile`Warp11`)
     level = 1
@@ -207,10 +267,30 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp2`, function (sprite, loc
     tiles.placeOnRandomTile(Player1, assets.tile`Warp3`)
     level = 0
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy8, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Family Gem`, function (sprite, location) {
     game.showLongText("Congrats, you found the family gem!", DialogLayout.Bottom)
     game.gameOver(true)
     level = 2
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy2, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC8, function (sprite, otherSprite) {
     if (otherSprite == Grassy_Bat) {
@@ -229,6 +309,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp12`, function (sprite, lo
     tiles.placeOnRandomTile(Player1, sprites.dungeon.collectibleRedCrystal)
     level = 1
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy5, function (sprite, otherSprite) {
+    Player1.startEffect(effects.hearts, 1000)
+    if (isInvincible == false) {
+        info.changeLifeBy(-1)
+        isInvincible = true
+        timer.after(1000, function () {
+            isInvincible = false
+        })
+    }
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp Grassy Terrain 1`, function (sprite, location) {
     level = 1
     tiles.setCurrentTilemap(tilemap`Grassy Terrain Dimension`)
@@ -243,13 +333,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp Grassy Terrain 1`, funct
     tiles.placeOnTile(Grassy_Snake, tiles.getTileLocation(24, 2))
     Grass_Skeleton1 = sprites.create(assets.image`Grassy Terrain Skeleton`, SpriteKind.Enemy4)
     tiles.placeOnTile(Grass_Skeleton1, tiles.getTileLocation(31, 45))
-    tiles.placeOnTile(Grass_Skeleton1, tiles.getTileLocation(31, 49))
+    Grass_Skeleton1.vy = 100
+    Grass_Skeleton1.setBounceOnWall(true)
     Grass_Skeleton2 = sprites.create(assets.image`Grassy Terrain Skeleton`, SpriteKind.Enemy5)
     tiles.placeOnTile(Grass_Skeleton2, tiles.getTileLocation(31, 12))
-    tiles.placeOnTile(Grass_Skeleton2, tiles.getTileLocation(24, 12))
+    Grass_Skeleton2.vx = 200
+    Grass_Skeleton2.setBounceOnWall(true)
     Grass_Skeleton3 = sprites.create(assets.image`Grassy Terrain Skeleton`, SpriteKind.Enemy6)
     tiles.placeOnTile(Grass_Skeleton3, tiles.getTileLocation(18, 26))
-    tiles.placeOnTile(Grass_Skeleton3, tiles.getTileLocation(7, 26))
+    Grass_Skeleton3.vx = 150
+    Grass_Skeleton3.setBounceOnWall(true)
 })
 let Grass_Skeleton3: Sprite = null
 let Grass_Skeleton2: Sprite = null
@@ -264,6 +357,7 @@ let Nether_Rat: Sprite = null
 let Grassy_Snake: Sprite = null
 let Nether_Bat: Sprite = null
 let Grassy_Rat: Sprite = null
+let isInvincible = false
 let NetherSkeletonKing: Sprite = null
 let level = 0
 let Injured_Dungeon_Skeleton: Sprite = null
@@ -289,13 +383,16 @@ Injured_Dungeon_Skeleton = sprites.create(assets.image`Injured Dungeon Skeleton`
 tiles.placeOnTile(Injured_Dungeon_Skeleton, tiles.getTileLocation(11, 3))
 let Dungeon_Skeleton1 = sprites.create(assets.image`Dungeon Skeleton`, SpriteKind.Enemy1)
 tiles.placeOnTile(Dungeon_Skeleton1, tiles.getTileLocation(13, 12))
-tiles.placeOnTile(Dungeon_Skeleton1, tiles.getTileLocation(13, 16))
+Dungeon_Skeleton1.vy = 100
+Dungeon_Skeleton1.setBounceOnWall(true)
 let Dungeon_Skeleton2 = sprites.create(assets.image`Dungeon Skeleton`, SpriteKind.Enemy2)
 tiles.placeOnTile(Dungeon_Skeleton2, tiles.getTileLocation(41, 21))
-tiles.placeOnTile(Dungeon_Skeleton2, tiles.getTileLocation(37, 21))
+Dungeon_Skeleton2.vx = 100
+Dungeon_Skeleton2.setBounceOnWall(true)
 let Dungeon_Skeleton3 = sprites.create(assets.image`Dungeon Skeleton`, SpriteKind.Enemy3)
 tiles.placeOnTile(Dungeon_Skeleton3, tiles.getTileLocation(28, 43))
-tiles.placeOnTile(Dungeon_Skeleton3, tiles.getTileLocation(41, 43))
+Dungeon_Skeleton3.vx = 200
+Dungeon_Skeleton3.setBounceOnWall(true)
 level = 0
 info.setLife(3)
 info.startCountdown(900)
