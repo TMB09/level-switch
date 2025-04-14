@@ -21,6 +21,7 @@ namespace SpriteKind {
     export const Enemy7 = SpriteKind.create()
     export const Enemy8 = SpriteKind.create()
     export const Enemy9 = SpriteKind.create()
+    export const Key = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC10, function (sprite, otherSprite) {
     if (otherSprite == NetherSkeletonKing) {
@@ -110,6 +111,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC2, function (sprite, otherSpr
         })
     }
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.greenOuterSouth2, function (sprite, location) {
+    if (controller.A.isPressed()) {
+        sprite.sayText("Woah, some of the enemy's vanished!", 1000, false)
+        sprites.destroy(Grass_Skeleton1)
+        sprites.destroy(Grass_Skeleton2)
+        sprites.destroy(Grass_Skeleton3)
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC12, function (sprite, otherSprite) {
     if (otherSprite == Nether_Bat) {
         timer.throttle("action", 1000, function () {
@@ -179,6 +188,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.NPC4, function (sprite, otherSpr
             )
         })
     }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Key, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite)
+    key += 1
+    Player1.sayText("A key for a secret room?", 1000, false)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleBlueCrystal, function (sprite, location) {
     level = 2
@@ -309,6 +323,12 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp12`, function (sprite, lo
     tiles.placeOnRandomTile(Player1, sprites.dungeon.collectibleRedCrystal)
     level = 1
 })
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorLight3, function (sprite, location) {
+    if (key > 0) {
+        tiles.placeOnTile(Player1, tiles.getTileLocation(40, 4))
+        level = 1
+    }
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy5, function (sprite, otherSprite) {
     Player1.startEffect(effects.hearts, 1000)
     if (isInvincible == false) {
@@ -344,9 +364,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Warp Grassy Terrain 1`, funct
     Grass_Skeleton3.vx = 150
     Grass_Skeleton3.setBounceOnWall(true)
 })
-let Grass_Skeleton3: Sprite = null
-let Grass_Skeleton2: Sprite = null
-let Grass_Skeleton1: Sprite = null
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.floorDark3, function (sprite, location) {
+    tiles.placeOnTile(Player1, tiles.getTileLocation(5, 40))
+    level = 1
+})
 let Grassy_Bat: Sprite = null
 let GrassyTerrainSkeletonKing: Sprite = null
 let Nether_Skeleton3: Sprite = null
@@ -356,10 +377,14 @@ let Nether_Snake: Sprite = null
 let Nether_Rat: Sprite = null
 let Grassy_Snake: Sprite = null
 let Nether_Bat: Sprite = null
+let Grass_Skeleton3: Sprite = null
+let Grass_Skeleton2: Sprite = null
+let Grass_Skeleton1: Sprite = null
 let Grassy_Rat: Sprite = null
 let isInvincible = false
 let NetherSkeletonKing: Sprite = null
 let level = 0
+let key = 0
 let Injured_Dungeon_Skeleton: Sprite = null
 let Dungeon_Snake: Sprite = null
 let Dungeon_Bat: Sprite = null
@@ -393,6 +418,9 @@ let Dungeon_Skeleton3 = sprites.create(assets.image`Dungeon Skeleton`, SpriteKin
 tiles.placeOnTile(Dungeon_Skeleton3, tiles.getTileLocation(28, 43))
 Dungeon_Skeleton3.vx = 200
 Dungeon_Skeleton3.setBounceOnWall(true)
+let Key = sprites.create(assets.image`Key`, SpriteKind.Key)
+tiles.placeOnTile(Key, tiles.getTileLocation(8, 16))
+key = 0
 level = 0
 info.setLife(3)
 info.startCountdown(900)

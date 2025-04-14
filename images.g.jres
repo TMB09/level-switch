@@ -84,6 +84,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Grassy Terrain Skeleton"
     },
+    "image18": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFANAAAAAAAAUFQAAAAAAADQ1QAAAAAAAAAFAAAAAAAAAA0AAAAAAAAARQAAAAAAAAAFAAAAAAAAAE0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Key"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
